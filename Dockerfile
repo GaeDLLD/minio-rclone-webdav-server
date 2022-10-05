@@ -2,22 +2,22 @@
 # STEP 1 build executable binary
 ############################
 FROM alpine:latest AS builder
-ENV RCLONE_VERSION=v1.56.0
+ENV RCLONE_VERSION=v1.59.2
 WORKDIR /bin/
-RUN wget https://github.com/ncw/rclone/releases/download/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-amd64.zip -O ./rclone.zip \ 
+RUN wget https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-${HOST_ARCH}.zip -O ./rclone.zip \
 	&& unzip ./rclone.zip -d ./ \ 
-	&& mv ./rclone-${RCLONE_VERSION}-linux-amd64/rclone ./rclone
+	&& mv ./rclone-${RCLONE_VERSION}-${HOST_ARCH}/rclone ./rclone
 
 ############################
 # STEP 2 build a small server image
 ############################
 FROM alpine:latest
-ENV BUCKET=rclone
-ENV AUTH_USER=rclone
-ENV AUTH_PASS=rclone123
+ENV BUCKET=test-bucket
+ENV AUTH_USER=admin
+ENV AUTH_PASS=password
 ENV BASE_URL=/
-ENV RC_USER=gui
-ENV RC_PASS=gui123
+ENV RC_USER=admin
+ENV RC_PASS=password
 
 RUN apk update \
 	&& apk add --no-cache fuse \
