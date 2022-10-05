@@ -37,5 +37,5 @@ WORKDIR /
 
 # Run the server binary.
 ENTRYPOINT /rclone -v --no-check-certificate --rc --rc-web-gui --rc-web-gui-no-open-browser --rc-user ${RC_USER} --rc-pass ${RC_PASS} --rc-addr :5572 --rc-serve serve webdav minio:${BUCKET} --disable-dir-list --vfs-cache-mode writes --addr :80 --user ${AUTH_USER} --pass ${AUTH_PASS} --baseurl ${BASE_URL}
-EXPOSE 80
+EXPOSE 8085
 EXPOSE 5572
