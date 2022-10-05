@@ -2,6 +2,7 @@ version: "2"
 services:
 
   test-minio:
+    container_name: test-minio
     image: minio/minio:latest
     ports:
       - "7000:9000"
@@ -13,9 +14,10 @@ services:
 
 
   test-webdav:
+    container_name: test-webdav
     image: minio-rclone-webdav-server:latest
-  #  volumes:
-  #    - ./rclone/rclone.conf:/root/.config/rclone/rclone.conf
+    volumes:
+      - ./rclone/rclone.conf:/root/.config/rclone/rclone.conf
     environment:
       BUCKET: test-bucket
       AUTH_USER: admin
@@ -28,6 +30,6 @@ services:
     links:
       - test-minio
     ports:
-      - "80:80"
+      - "8085:85"
       - "5572:5572"
     restart: always
