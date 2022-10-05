@@ -27,7 +27,7 @@ AUTH_USER: rclone
 ```
 > Your Webdav basic-auth password
 ```
-AUTH_PASS: rclone123
+AUTH_PASS: password
 ```
 > Your Webdav access base path, default "/", usually used for Webdav behind nginx/traefik
 ```
