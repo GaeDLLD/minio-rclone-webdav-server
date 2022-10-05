@@ -13,7 +13,7 @@ services:
 
 
   test-webdav:
-    image: test-rclone-webdav-server:latest
+    image: minio-rclone-webdav-server:latest
   #  volumes:
   #    - ./rclone/rclone.conf:/root/.config/rclone/rclone.conf
     environment:
