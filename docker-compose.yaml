@@ -30,6 +30,6 @@ services:
     links:
       - test-minio
     ports:
-      - "8085:85"
+      - "8085:80"
       - "5572:5572"
     restart: always
