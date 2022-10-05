@@ -3,6 +3,7 @@
 ############################
 FROM alpine:latest AS builder
 ENV RCLONE_VERSION=v1.59.2
+ENV HOST_ARCH=linux-ARM64
 WORKDIR /bin/
 RUN wget https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-${HOST_ARCH}.zip -O ./rclone.zip \
 	&& unzip ./rclone.zip -d ./ \ 
